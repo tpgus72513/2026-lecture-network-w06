@@ -1,0 +1,24 @@
+== intact topology, router u
+  dest  cost  installed  all equal-cost first hops
+  v        2  v          v
+  w        3  x          x
+  x        1  x          x
+  y        2  x          x
+  z        4  x          x
+
+  direct link u-w costs 5; u-x-y-w costs 3
+
+== after u-x fails, router u
+  dest  cost  installed  all equal-cost first hops
+  v        2  v          v
+  w        5  v          v, w   <- tie
+  x        4  v          v
+  y        5  v          v
+  z        7  v          v
+
+== hop changes at u
+  v: v -> v   (unchanged)
+  w: x -> v
+  x: x -> v
+  y: x -> v
+  z: x -> v

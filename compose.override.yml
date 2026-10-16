@@ -1,0 +1,10 @@
+# docker.io/frrouting/frr:v9.1.0 (compose.yml) does not exist on Docker Hub;
+# the FRR project publishes the same 9.1.0 release on quay.io. Docker Compose
+# merges this file automatically, so compose.yml and scenario.sh stay untouched.
+services:
+  r1:
+    image: quay.io/frrouting/frr:9.1.0
+  r2:
+    image: quay.io/frrouting/frr:9.1.0
+  r3:
+    image: quay.io/frrouting/frr:9.1.0

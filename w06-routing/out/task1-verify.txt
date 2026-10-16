@@ -1,0 +1,11 @@
+  ok    costs from u: {'x': 1, 'v': 2, 'y': 2, 'w': 3, 'z': 4}
+  ok    table at u:  {'x': 'x', 'v': 'v', 'y': 'x', 'w': 'x', 'z': 'x'}
+  ok    table at u covers all, hops are neighbours
+  ok    table at v covers all, hops are neighbours
+  ok    table at w covers all, hops are neighbours
+  ok    table at x covers all, hops are neighbours
+  ok    table at y covers all, hops are neighbours
+  ok    table at z covers all, hops are neighbours
+  ok    u reroutes when u-x goes down: {'v': 'v', 'x': 'v', 'w': 'v', 'y': 'v', 'z': 'v'}
+
+  all ok

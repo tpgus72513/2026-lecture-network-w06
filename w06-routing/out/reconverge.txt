@@ -1,0 +1,39 @@
+OSPF timers: frr.conf sets none, so FRR defaults apply; `show ip ospf interface`
+on all three routers reports: Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+(timers set in frr.conf: none)
+
+seconds after the event fired; first/last time each router's routes changed
+first-settled: every router has made its first change; last-change: nobody moves after
+event     run             r1             r2             r3  first-settled  last-change
+cut         1      0.06/0.06      0.14/0.14      0.07/0.07         0.14 s       0.14 s
+cut         2      0.04/0.04      0.12/0.12      0.04/0.04         0.12 s       0.12 s
+cut         3      0.07/0.07      0.08/0.08      0.05/0.05         0.08 s       0.08 s
+          (r1 eth1 link down (scenario.sh cut))
+restore     1      0.07/3.43      8.42/8.42      0.10/0.10         8.42 s       8.42 s
+restore     2      0.06/4.54      9.48/9.48      0.11/0.11         9.48 s       9.48 s
+restore     3      0.04/4.00      9.03/9.03      0.04/0.04         9.03 s       9.03 s
+          (r1 eth1 link up (scenario.sh restore))
+silent      1    31.63/34.90    31.61/31.61    31.66/34.89        31.66 s      34.90 s
+silent      2    30.63/35.06    30.75/30.75    30.66/35.06        30.75 s      35.06 s
+silent      3    31.23/35.06    31.22/31.22    31.18/35.06        31.23 s      35.06 s
+          (r1 drops all packets on eth1, link stays up)
+unsilent    1      4.43/4.60      9.53/9.53              -         9.53 s       9.53 s
+unsilent    2      8.77/8.77    13.82/13.82              -        13.82 s      13.82 s
+unsilent    3      6.92/7.08    15.95/15.95              -        15.95 s      15.95 s
+          (r1 stops dropping)
+cost        1      0.18/0.18      0.21/0.21              -         0.21 s       0.21 s
+          (r1 eth0 cost 10 -> 100 (scenario.sh cost))
+uncost      1      0.21/0.21      0.13/0.13              -         0.21 s       0.21 s
+          (r1 eth0 cost 100 -> 10)
+
+silent: the first change (first-settled 30.8-31.7 s) is the dead timer firing;
+the tables are right from then. The second change (~35 s) is r1 - alone on net_b, interface still
+up - advertising net_b as its own stub again, which puts r3's ECMP via r1 back.
+That route is wrong (r1's packets on net_b are dropped) and stays wrong - see
+out/route-after-silent.txt: OSPF learned that r2 went silent, not that the wire
+itself is useless, and the interface is still up.
+
+scenario.sh cut (run once, raw output in out/scenario/) reported "재수렴 감지: 2 초".
+It compares raw `show ip route` text, whose uptime column changes every second,
+so it fires on the first 1 s poll whether or not a route moved - here the route
+had in fact moved within 0.14 s, but the script cannot tell it apart.

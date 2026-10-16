@@ -1,0 +1,35 @@
+event unsilent on r1: iptables -D INPUT -i eth1 -j DROP && iptables -D OUTPUT -o eth1 -j DROP
+t0 55652.45
+== r1
+@ 55648.89
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55656.88
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/30] via 172.20.0.3, eth0, weight 1
+@ 55657.05
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+  *                        via 172.22.0.2, eth1, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r2
+@ 55649.38
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55661.98
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+  *                        via 172.22.0.3, eth1, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r3
+@ 55649.89
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+  *                        via 172.20.0.2, eth1, weight 1
+@end

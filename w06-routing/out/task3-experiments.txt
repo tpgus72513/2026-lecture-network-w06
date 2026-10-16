@@ -1,0 +1,51 @@
+== 1. graded run (seed 246): 1,000 events by type
+  event              count  full SPF  avoided  costs moved per event
+  down                 371        78      293  1.00
+  cost up              237        98      139  1.10
+  up                    70         0       70  0.89
+  cost down            245         0      245  1.27
+  no-op (same cost)     77         0       77  0.00
+  total               1000       176      824   (+1 SPF at start-up)
+
+== 2. state kept between events
+  dist: 400 entries, about 24 KiB (the graph copy every router already holds: about 129 KiB)
+
+== 3. other seeds (same size), table checked after every event
+  seed  1: wrong 0, SPF  177/1001, avoided 82%, wall 1.11s vs 0.84s
+  seed  2: wrong 0, SPF  185/1001, avoided 82%, wall 2.04s vs 0.98s
+  seed  3: wrong 0, SPF  184/1001, avoided 82%, wall 2.64s vs 0.94s
+  seed  4: wrong 0, SPF  161/1001, avoided 84%, wall 1.59s vs 1.83s
+  seed  5: wrong 0, SPF  177/1001, avoided 82%, wall 3.37s vs 1.41s
+  seed  6: wrong 0, SPF  162/1001, avoided 84%, wall 5.27s vs 4.15s
+  seed  7: wrong 0, SPF  185/1001, avoided 82%, wall 2.95s vs 2.24s
+  seed  8: wrong 0, SPF  182/1001, avoided 82%, wall 8.43s vs 2.65s
+  seed  9: wrong 0, SPF  191/1001, avoided 81%, wall 3.72s vs 2.78s
+  seed 10: wrong 0, SPF  199/1001, avoided 80%, wall 3.22s vs 2.15s
+  seed 11: wrong 0, SPF  188/1001, avoided 81%, wall 2.81s vs 1.71s
+  seed 12: wrong 0, SPF  199/1001, avoided 80%, wall 2.77s vs 2.01s
+  seed 13: wrong 0, SPF  173/1001, avoided 83%, wall 2.07s vs 1.58s
+  seed 14: wrong 0, SPF  172/1001, avoided 83%, wall 2.26s vs 1.76s
+  seed 15: wrong 0, SPF  186/1001, avoided 81%, wall 3.58s vs 4.41s
+  seed 16: wrong 0, SPF  171/1001, avoided 83%, wall 2.73s vs 1.67s
+  seed 17: wrong 0, SPF  172/1001, avoided 83%, wall 2.84s vs 1.55s
+  seed 18: wrong 0, SPF  179/1001, avoided 82%, wall 2.28s vs 1.82s
+  seed 19: wrong 0, SPF  169/1001, avoided 83%, wall 1.63s vs 1.11s
+  seed 20: wrong 0, SPF  182/1001, avoided 82%, wall 1.64s vs 1.25s
+  avoided: min 80%, median 82%, max 84%
+
+== 4. where the wall time goes (graded run, mean per event)
+  no SPF     824 events    0.12 ms each
+  full SPF   176 events    2.03 ms each
+  one bare dijkstra_table(): 1.30 ms
+
+== 5. wall time with and without bench.py's per-event check (best of 3)
+  baseline           1.17 s
+  yours, checked     1.46 s
+  yours, unchecked   0.52 s
+
+== 6. _shorten (cost falls, no SPF): nodes lowered per call
+  seed 246: 151 calls, mean 2.5, max 33 of 400 nodes
+  seed   1: 148 calls, mean 4.0, max 95 of 400 nodes
+
+== 7. fuzz: 3,000 small random areas x 40 events (partitions included)
+  120,000 events, wrong tables 0, crashed runs 0

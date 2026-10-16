@@ -1,0 +1,31 @@
+
+=== Task 1
+  ok   [1] R6 no networkx
+  ok    costs from u: {'x': 1, 'v': 2, 'y': 2, 'w': 3, 'z': 4}
+  ok    table at u:  {'x': 'x', 'v': 'v', 'y': 'x', 'w': 'x', 'z': 'x'}
+  ok    table at u covers all, hops are neighbours
+  ok    table at v covers all, hops are neighbours
+  ok    table at w covers all, hops are neighbours
+  ok    table at x covers all, hops are neighbours
+  ok    table at y covers all, hops are neighbours
+  ok    table at z covers all, hops are neighbours
+  ok    u reroutes when u-x goes down: {'v': 'v', 'x': 'v', 'w': 'v', 'y': 'v', 'z': 'v'}
+
+  all ok
+  ok   [1] all checks
+
+=== Task 2
+  ok   [2] A1 three traceroutes  - 11,051 bytes
+  ok   [2] B1 tables before the cut  - 903 bytes
+  ok   [2] B3 tables after the cut  - 692 bytes
+  ok   [2] B4 measured reconvergence time  - 2,756 bytes
+  ok   [2] traceroute output has hops  - 150 hop lines
+
+=== Task 3
+  baseline       SPF runs  1001   wall   0.77s
+  yours          SPF runs   177   wall   1.11s   wrong after 0 event(s)
+  ok   [3] R3 table correct after every event  - 0 wrong
+  ok   [3] R4 fewer SPF runs  - 82% avoided
+ skip  [3] R5 wall-time argument in observation.md  - graded by a human
+
+  9 passed, 0 failed, 1 skipped

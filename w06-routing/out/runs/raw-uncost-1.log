@@ -1,0 +1,31 @@
+event uncost on r1: vtysh -c 'configure terminal' -c 'interface eth0' -c 'ip ospf cost 10'
+t0 55782.66
+== r1
+@ 55778.60
+O>* 172.19.0.0/16 [110/20] via 172.22.0.2, eth1, weight 1
+O   172.20.0.0/16 [110/30] via 172.22.0.2, eth1, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55782.87
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+  *                        via 172.22.0.2, eth1, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r2
+@ 55779.27
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55782.79
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+  *                        via 172.22.0.3, eth1, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r3
+@ 55779.94
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+  *                        via 172.20.0.2, eth1, weight 1
+@end

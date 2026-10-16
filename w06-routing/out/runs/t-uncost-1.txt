@@ -1,0 +1,17 @@
+event uncost on r1: vtysh -c 'configure terminal' -c 'interface eth0' -c 'ip ospf cost 10'
+  r1: routes changed at +0.21s
+      O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+        *                        via 172.22.0.2, eth1, weight 1
+      O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+  r2: routes changed at +0.13s
+      O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+        *                        via 172.22.0.3, eth1, weight 1
+      O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+  r3: routes changed at no change
+      O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+      O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+        *                        via 172.20.0.2, eth1, weight 1
+  converged: last table change 0.21 s after the event

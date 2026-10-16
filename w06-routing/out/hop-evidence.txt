@@ -1,0 +1,31 @@
+# 2026-10-16 14:53  from campus Wi-Fi (KUWIFI)
+
+== RDAP owner of each hop
+  163.152.233.129  KUCCNET-KR       KR  163.152.0.0 - 163.152.255.255  Korea University
+  163.152.205.206  KUCCNET-KR       KR  163.152.0.0 - 163.152.255.255  Korea University
+  175.121.235.141  broadNnet-KR     KR  175.112.0.0 - 175.127.255.255  SK Broadband Co Ltd
+  39.120.4.162     broadNnet-KR     KR  39.112.0.0 - 39.127.255.255  SK Broadband Co Ltd
+  211.45.68.29     DREAMX-KR        KR  211.45.64.0 - 211.45.95.255  DREAMLINE CO.
+  211.56.189.162   DREAMX-KR        KR  211.56.128.0 - 211.56.191.255  DREAMLINE CO.
+  141.101.82.17    CLOUDFLARE-EU    EU  141.101.80.0 - 141.101.87.255  CloudFlare CDN network
+  218.100.9.26     BBIX-OSAKA       JP  218.100.9.0 - 218.100.9.255  BBIX Service Network Osaka; Send abuse reports to abuse@bbix
+  184.104.197.109  HURRICANE-11     None 184.104.0.0 - 184.105.255.255  
+  171.64.255.228   NETBLK-SUNET     None 171.64.0.0 - 171.67.255.255  
+  211.108.22.106   broadNnet-KR     KR  211.108.0.0 - 211.108.255.255  SK Broadband Co Ltd
+  147.46.254.187   NET-SNU-KR       KR  147.46.0.0 - 147.46.255.255  Seoul National University
+
+== https://1.1.1.1/cdn-cgi/trace (which Cloudflare site answered)
+  colo=ICN
+  http=http/1.1
+  loc=KR
+  tls=TLSv1.3
+
+== ping 1.1.1.1
+Ping 1.1.1.1 32바이트 데이터 사용:
+요청 시간이 만료되었습니다.
+요청 시간이 만료되었습니다.
+요청 시간이 만료되었습니다.
+요청 시간이 만료되었습니다.
+
+1.1.1.1에 대한 Ping 통계:
+    패킷: 보냄 = 4, 받음 = 0, 손실 = 4 (100% 손실),

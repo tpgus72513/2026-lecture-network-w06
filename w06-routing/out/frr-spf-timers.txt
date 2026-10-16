@@ -1,0 +1,10 @@
+# docker compose --profile routing exec r1 vtysh -c "show ip ospf"   (FRR 9.1.0, lines about SPF)
+ OSPF Routing Process, Router ID: 1.1.1.1
+ Initial SPF scheduling delay 0 millisec(s)
+ Minimum hold time between consecutive SPFs 50 millisec(s)
+ Maximum hold time between consecutive SPFs 5000 millisec(s)
+ Hold time multiplier is currently 1
+ SPF algorithm last executed 8.170s ago
+ Last SPF duration 30 usecs
+ SPF timer is inactive
+   SPF algorithm executed 1 times

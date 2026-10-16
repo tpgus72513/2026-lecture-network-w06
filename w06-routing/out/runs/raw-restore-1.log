@@ -1,0 +1,46 @@
+event restore on r1: ip link set eth1 up
+t0 55473.59
+== r1
+@ 55469.78
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.22.0.0/16 [110/30] via 172.20.0.3, eth0, weight 1
+@ 55473.66
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+@ 55473.83
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55476.87
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/30] via 172.20.0.3, eth0, weight 1
+@ 55477.02
+O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+  *                        via 172.22.0.2, eth1, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r2
+@ 55470.44
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@ 55482.01
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+  *                        via 172.22.0.3, eth1, weight 1
+O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+@end
+== r3
+@ 55470.99
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+@ 55473.69
+O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+  *                        via 172.20.0.2, eth1, weight 1
+@end

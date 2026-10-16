@@ -1,0 +1,15 @@
+event silent on r1: iptables -A INPUT -i eth1 -j DROP && iptables -A OUTPUT -o eth1 -j DROP
+  r1: routes changed at +30.63s, +30.78s, +35.06s
+      O>* 172.19.0.0/16 [110/20] via 172.20.0.3, eth0, weight 1
+      O   172.20.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+  r2: routes changed at +30.75s
+      O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O>* 172.20.0.0/16 [110/20] via 172.19.0.3, eth0, weight 1
+      O   172.22.0.0/16 [110/10] is directly connected, eth1, weight 1
+  r3: routes changed at +30.66s, +35.06s
+      O   172.19.0.0/16 [110/10] is directly connected, eth0, weight 1
+      O   172.20.0.0/16 [110/10] is directly connected, eth1, weight 1
+      O>* 172.22.0.0/16 [110/20] via 172.19.0.2, eth0, weight 1
+        *                        via 172.20.0.2, eth1, weight 1
+  converged: last table change 35.06 s after the event
